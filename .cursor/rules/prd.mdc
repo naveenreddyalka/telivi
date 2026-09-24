@@ -1,0 +1,12 @@
+---
+description: Telivi product decisions live in the PRD
+alwaysApply: true
+---
+
+# Telivi PRD
+
+[docs/PRD.md](../../docs/PRD.md) is the source of truth for what Telivi is.
+
+- Read it before proposing or writing implementation.
+- Do not add training code, a model architecture, or dependencies until an issue asks for them.
+- Ownership means both things: a person is named on the weights they change, and people who lend compute hold a stake in the model.
