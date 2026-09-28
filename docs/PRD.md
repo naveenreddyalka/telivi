@@ -59,10 +59,10 @@ Decisions already made:
 - A stake is not a coin, and this PRD does not make it transferable.
 - Training runs on devices people lend, including phones and browsers.
 - The record of who updated a weight is append-only.
+- A person is identified by a self-generated Ed25519 public key; every chain entry is signed by its author and the ledger verifies the signature before appending ([ADR-0002](decisions/0002-identity.md)).
 
 Decisions not made yet, and not to be invented in code until a later issue chooses them:
 
-- How a person is identified.
 - How a device proves it did the training work.
 - The model architecture, size, and training objective.
 - How the coordinator reaches a phone or a browser.
