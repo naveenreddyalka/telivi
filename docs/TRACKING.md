@@ -9,7 +9,14 @@ _No ADRs merged yet._
 
 ## Phase 1 — Thin slice
 
-_No issues merged yet._
+### docs/RULES.md: the training and stake rules in the open ([#8](https://github.com/naveenreddyalka/telivi/issues/8))
+
+<!-- tracking:#8 -->
+
+**Status:** merged 2026-09-28. Added `docs/RULES.md` (ten rules, each linked
+to its PRD line) and a link from `README.md`. Documentation only; no test file
+covers it. The rules link to the ledger and stake book tests once #5 and #6
+land.
 
 <!-- tracking-append: add the next ### section above ## How to update; on conflict keep both -->
 
