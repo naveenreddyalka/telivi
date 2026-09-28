@@ -59,11 +59,11 @@ Decisions already made:
 - A stake is not a coin, and this PRD does not make it transferable.
 - Training runs on devices people lend, including phones and browsers.
 - The record of who updated a weight is append-only.
+- A device proves it did the training work by agreement: a result changes the model and the stake only after it passes a plausibility gate and matches, within a tolerance, an independent recomputation of the same work unit, by another device at an adaptive replication rate or by the coordinator as a random spot-check and tie-break, behind one injected verifier interface ([ADR-0003](decisions/0003-proof-of-work.md)).
 
 Decisions not made yet, and not to be invented in code until a later issue chooses them:
 
 - How a person is identified.
-- How a device proves it did the training work.
 - The model architecture, size, and training objective.
 - How the coordinator reaches a phone or a browser.
 - Whether a stake can later be transferred, split, or used for governance.
