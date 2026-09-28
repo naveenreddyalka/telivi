@@ -10,3 +10,4 @@ alwaysApply: true
 - Read it before proposing or writing implementation.
 - Do not add training code, a model architecture, or dependencies until an issue asks for them.
 - Ownership means both things: a person is named on the weights they change, and people who lend compute hold a stake in the model.
+- Work flows through issues: `decision` issues produce an ADR a human merges; `auto-dev` issues produce tests plus code the loop merges. See [AGENTS.md](../../AGENTS.md) and [docs/ROADMAP.md](../../docs/ROADMAP.md).
