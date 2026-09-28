@@ -59,6 +59,7 @@ Decisions already made:
 - A stake is not a coin, and this PRD does not make it transferable.
 - Training runs on devices people lend, including phones and browsers.
 - The record of who updated a weight is append-only.
+- Telivi is written in TypeScript end to end: the contributor runtime as browser code, the coordinator, weight ledger, and stake book on Node. Toolchain, test runner, repo layout, and CI are set by [ADR-0001](decisions/0001-language-and-toolchain.md).
 
 Decisions not made yet, and not to be invented in code until a later issue chooses them:
 
