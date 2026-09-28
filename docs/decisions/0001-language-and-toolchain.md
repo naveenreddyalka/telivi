@@ -113,12 +113,13 @@ Concretely, for the first Phase 1 issue to add (nothing is added in this PR):
 
 ## Consequences
 
-- Possible now: #5 (weight ledger), #6 (stake book) and #7 (coordinator +
-  stand-in runtime) can start. The first of them to merge adds the root
-  `package.json`, workspaces, `.nvmrc`, `tsconfig`, Biome config, the CI
-  workflow, and its own `packages/<module>/`; the others add only their
-  package. The Phase 1 exit command is a root `npm run demo` script added by
-  the coordinator issue.
+- Possible now: #13 adds the toolchain once (root `package.json`, workspaces,
+  `.nvmrc`, `tsconfig`, Biome config, the CI workflow, and an empty
+  `packages/<module>/` per module) with no module code. #5 (weight ledger),
+  #6 (stake book) and #7 (coordinator + stand-in runtime) stay `blocked` until
+  #13 merges, then each adds only its own `packages/<module>/`, so no two
+  agents touch the root files at once. The Phase 1 exit command is a root
+  `npm run demo` script added by the coordinator issue.
 - Harder: CPU-heavy kernels in Phase 2 will be slower than native until a WASM
   kernel is added; that addition is a build artifact inside `packages/runtime`
   and a new `decision` issue if it needs a second toolchain in CI.
