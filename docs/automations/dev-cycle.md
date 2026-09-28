@@ -15,8 +15,9 @@ Each run:
    merge origin/main, keep both docs/TRACKING.md sections, push. Never merge
    a PR on an adr/* branch; those wait for a human.
 1. List open issues labeled auto-dev with no agent:working label, no blocked
-   label, and no open linked PR:
-     gh issue list --label auto-dev --state open --json number,title,labels
+   label, and no open linked PR. Do not pass --label; the server-side filter
+   can miss freshly created labels. List unfiltered and filter client-side:
+     gh issue list --state open --limit 100 --json number,title,labels
    Pick P1 before P2 before P3, then the lowest number. If none, refill per
    docs/automations/prd-cycle.md, then pick again.
 2. Delegate the issue to one agent with AGENTS.md § Working an issue as its
