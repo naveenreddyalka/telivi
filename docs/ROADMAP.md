@@ -59,3 +59,45 @@ Coordinator handles concurrent contributors; ledger and stake book survive
 restarts; anyone can read the model, its history, and the stake table from
 outside the project. Only then: the questions the PRD parked (transfer,
 governance, app-store release).
+
+## Landscape
+
+Related work, one line each, with the part of Telivi it informs. Scanned
+2026-09-29. None of it decides anything in the PRD; it is input for the ADRs
+and the Phase 2 stand-in replacements.
+
+- **Verification of contributed work (ADR-0003).** Gensyn's
+  [Verde](https://arxiv.org/abs/2502.19405) verifies training on untrusted
+  nodes by bisecting a dispute down to one operator, and needs bitwise
+  reproducible kernels (RepOps) to do it. Prime Intellect's
+  [TOPLOC](https://proceedings.mlr.press/v267/ong25a.html) hashes
+  intermediate activations to verify inference cheaply, but does not extend to
+  training. Both papers describe Proof-of-Learning-style heuristics as
+  spoofable. Phase 2's real verifier has to pick a point on that
+  cost-versus-guarantee line.
+- **Permissionless training over the internet (coordinator).** Prime
+  Intellect's [INTELLECT-2](https://arxiv.org/abs/2505.07291) ran 32B RL
+  training over a permissionless swarm, with untrusted workers doing rollouts
+  and trusted nodes doing the weight updates. Nous Research's
+  [Psyche](https://nousresearch.com/nous-psyche) coordinates a 40B
+  pretraining run through a chain and compresses gradients with DisTrO.
+  Pluralis's [Agora](https://pluralis.ai/docs/) splits a 13B model into
+  pipeline stages so no contributor holds the whole model. All three assume
+  a GPU per contributor; none targets a phone or a browser tab.
+- **Who owns the result (stake book).** Bittensor's Templar subnet trained
+  [Covenant-72B](https://docs.tplr.ai/validators/weight-setting/) with 70+
+  contributors and pays them in a token from validator scores of gradient
+  quality. Macrocosmos's
+  [pretraining subnet](https://www.macrocosmos.ai/research/pretraining_whitepaper.pdf)
+  ties each uploaded model to one miner UID on chain. Reward there is a coin,
+  and ownership is per model, not per weight. Telivi's stake is a share of the
+  model and its attribution is per weight, which is the gap this project fills.
+- **Browser and phone as the runtime (Phase 2).**
+  [quectoGPT](https://github.com/minusxai/quectoGPT) trains a small GPT
+  across browser tabs over WebGPU with a coordination server averaging weight
+  deltas; [EdgeTrain](https://github.com/v-code01/edgetrain) trains in the
+  browser with WGSL shaders and a CPU fallback.
+  [Flower-CEC-WebBrowser](https://github.com/fcrlab-unime/Flower-CEC-WebBrowser)
+  wraps a browser as a Flower federated-learning client with nothing installed.
+  WebGPU is native in Chrome and Edge and behind flags elsewhere, so the
+  browser runtime needs a CPU path on day one.
